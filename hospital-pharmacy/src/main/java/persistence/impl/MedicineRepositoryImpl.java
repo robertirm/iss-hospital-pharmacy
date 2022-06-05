@@ -92,6 +92,17 @@ public class MedicineRepositoryImpl implements MedicineRepository {
 
     @Override
     public void update(Medicine entity) {
-
+        try(Session session = sessionFactory.openSession()) {
+            Transaction tx = null;
+            try {
+                tx = session.beginTransaction();
+                session.update(entity);
+                tx.commit();
+            } catch (RuntimeException ex) {
+                System.err.println("Eroare la update " + ex);
+                if (tx != null)
+                    tx.rollback();
+            }
+        }
     }
 }

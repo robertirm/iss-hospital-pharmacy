@@ -5,7 +5,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.Pharmacist;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
@@ -23,7 +22,7 @@ import services.Services;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class Main extends Application {
     private static SessionFactory sessionFactory;
 
     static void initialize() {
@@ -48,11 +47,8 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/login.fxml"));
-//        FXMLLoader fxmlLoader = new FXMLLoader(ui.HelloApplication.class.getResource("/pharmacist-menu.fxml"));
-//        FXMLLoader fxmlLoader = new FXMLLoader(ui.HelloApplication.class.getResource("/medicine-menu.fxml"));
-//        FXMLLoader fxmlLoader = new FXMLLoader(ui.HelloApplication.class.getResource("/medical-order-menu.fxml"));
-//        FXMLLoader fxmlLoader = new FXMLLoader(ui.HelloApplication.class.getResource("/pharmacist-order-menu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/login.fxml"));
+
         Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
         PharmacistRepository pharmacistRepository = new PharmacistRepositoryImpl(sessionFactory);
         MedicineRepository medicineRepository = new MedicineRepositoryImpl(sessionFactory);
@@ -63,15 +59,9 @@ public class HelloApplication extends Application {
         LoginController guiController = fxmlLoader.getController();
         guiController.setServices(services);
 
-        pharmacistRepository.add(new Pharmacist("bob","parola"));
-//        System.out.println(pharmacistRepository.getAll().size());
-//        pharmacistRepository.delete(1);
-//        System.out.println(pharmacistRepository.getAll().size());
-
-        //userService.addPharmacist();
-
         stage.setTitle("Hello!");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
 
     }

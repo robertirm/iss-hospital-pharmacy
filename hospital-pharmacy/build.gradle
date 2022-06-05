@@ -24,7 +24,7 @@ dependencies {
 }
 
 application{
-    mainClass='ui.HelloApplication'
+    mainClass='ui.Main'
 }
 
 javafx {

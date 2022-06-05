@@ -19,8 +19,8 @@
         <property name="format_sql">true</property>
 
         <mapping class="model.Pharmacist"/>
+        <mapping class="model.Order"/>
         <mapping class="model.MedicalPersonnel"/>
         <mapping class="model.Medicine"/>
-        <mapping class="model.Order"/>
     </session-factory>
 </hibernate-configuration>

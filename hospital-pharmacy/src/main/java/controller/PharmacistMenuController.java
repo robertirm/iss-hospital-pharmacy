@@ -53,4 +53,22 @@ public class PharmacistMenuController {
         window.setScene(scene);
         window.show();
     }
+
+    @FXML
+    void backButtonAction(ActionEvent event) throws IOException {
+        URL url = Paths.get("./src/main/resources/login.fxml").toUri().toURL();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(url);
+
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+
+        LoginController controller = loader.getController();
+        controller.setServices(services);
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+    }
+
 }

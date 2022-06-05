@@ -9,31 +9,31 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #65c2b2;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PharmacistOrderMenu">
    <children>
-      <ListView layoutX="41.0" layoutY="64.0" prefHeight="598.0" prefWidth="327.0" style="-fx-background-color: #9cd9cd;" />
+      <ListView fx:id="ordersListView" layoutX="41.0" layoutY="64.0" prefHeight="598.0" prefWidth="327.0" style="-fx-background-color: #9cd9cd;" />
       <Label alignment="CENTER" layoutX="76.0" layoutY="26.0" prefHeight="34.0" prefWidth="232.0" style="-fx-background-color: #2ebfa3;" text="Orders">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <ListView layoutX="500.0" layoutY="92.0" prefHeight="374.0" prefWidth="506.0" style="-fx-background-color: #9cd9cd;" />
+      <ListView fx:id="itemsListView" layoutX="500.0" layoutY="92.0" prefHeight="374.0" prefWidth="506.0" style="-fx-background-color: #9cd9cd;" />
       <Label alignment="CENTER" layoutX="500.0" layoutY="53.0" prefHeight="34.0" prefWidth="232.0" style="-fx-background-color: #2ebfa3;" text="Items">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <Button layoutX="608.0" layoutY="605.0" mnemonicParsing="false" style="-fx-background-color: #4da393;" text="CONFIRM ORDER">
+      <Button fx:id="confirmOrderButton" layoutX="608.0" layoutY="605.0" mnemonicParsing="false" onAction="#confirmOrderAction" style="-fx-background-color: #4da393;" text="CONFIRM ORDER">
          <font>
             <Font size="27.0" />
          </font>
       </Button>
-      <TextArea layoutX="500.0" layoutY="512.0" prefHeight="58.0" prefWidth="380.0" promptText="Write here " style="-fx-background-color: #9cd9cd;" />
+      <TextArea fx:id="mentionTextField" layoutX="500.0" layoutY="512.0" prefHeight="58.0" prefWidth="380.0" promptText="Write here " style="-fx-background-color: #9cd9cd;" />
       <Label alignment="CENTER" layoutX="500.0" layoutY="488.0" prefHeight="25.0" prefWidth="114.0" style="-fx-background-color: #2ebfa3;" text="MENTIONS" />
-      <Button alignment="CENTER" layoutX="891.0" layoutY="512.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="114.0" style="-fx-background-color: #4da393;" text="DECLINE ORDER" textAlignment="CENTER">
+      <Button fx:id="declineOrderButton" alignment="CENTER" layoutX="891.0" layoutY="512.0" mnemonicParsing="false" onAction="#declineOrderAction" prefHeight="58.0" prefWidth="114.0" style="-fx-background-color: #4da393;" text="DECLINE ORDER" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="964.0" layoutY="656.0" mnemonicParsing="false" onAction="#backAction" prefHeight="39.0" prefWidth="78.0" style="-fx-background-color: #4da393;" text="BACK">
+      <Button fx:id="backButton" layoutX="964.0" layoutY="656.0" mnemonicParsing="false" onAction="#backAction" prefHeight="39.0" prefWidth="78.0" style="-fx-background-color: #4da393;" text="BACK">
          <font>
             <Font size="19.0" />
          </font>

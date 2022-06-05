@@ -1,7 +1,5 @@
 package controller;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -53,17 +51,14 @@ public class MedicineMenuController {
     void loadMedicineList() {
         medicineObservableList.setAll(services.getAllMedicine());
         medicineListView.setItems(medicineObservableList);
-        medicineListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Medicine>() {
-            @Override
-            public void changed(ObservableValue<? extends Medicine> observable, Medicine oldValue, Medicine newValue) {
-                nameTextField.setText(newValue.getName());
-                descriptionTextField.setText(newValue.getDescription());
-            }
+        medicineListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            nameTextField.setText(newValue.getName());
+            descriptionTextField.setText(newValue.getDescription());
         });
     }
 
     @FXML
-    void addMedicineAction(ActionEvent event){
+    void addMedicineAction(ActionEvent event) {
         String name = nameTextField.getText();
         String description = descriptionTextField.getText();
 
@@ -74,7 +69,7 @@ public class MedicineMenuController {
     }
 
     @FXML
-    void deleteMedicineAction(ActionEvent event){
+    void deleteMedicineAction(ActionEvent event) {
         int id = medicineListView.getSelectionModel().getSelectedItem().getId();
 
         services.deleteMedicine(id);
@@ -85,8 +80,13 @@ public class MedicineMenuController {
     }
 
     @FXML
-    void updateMedicineAction(ActionEvent event){
+    void updateMedicineAction(ActionEvent event) {
+        Medicine medicine = medicineListView.getSelectionModel().getSelectedItem();
+        medicine.setName(nameTextField.getText());
+        medicine.setDescription(descriptionTextField.getText());
 
+        this.services.updateMedicine(medicine);
+        loadMedicineList();
     }
 
 }

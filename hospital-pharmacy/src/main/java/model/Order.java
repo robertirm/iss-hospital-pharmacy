@@ -1,16 +1,49 @@
 package model;
 
+
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "order", schema = "public")
+@Table(name = "medical_orders", schema = "public")
 public class Order {
     private Integer id;
+    private List<Medicine> medicineList = new ArrayList<>();
+    private String description;
+    private String status;
 
-    private List<Medicine> medicineList;
+    public Order() {}
+
+    public Order(String description) {
+        this.description = description;
+        this.status = "open";
+    }
+    public Order(String description,String status) {
+        this.description = description;
+        this.status = status;
+    }
+
+    @Column(name = "description")
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+
+    @Column(name = "status")
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     @Id
     @Column(name = "id_order")
@@ -25,7 +58,8 @@ public class Order {
         this.id = id;
     }
 
-    @ManyToMany(cascade = CascadeType.DETACH)
+//    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @JoinTable(
             name = "order_medicine",
             joinColumns = { @JoinColumn(name = "id_order") },
@@ -37,5 +71,10 @@ public class Order {
 
     public void setMedicineList(List<Medicine> medicineList) {
         this.medicineList = medicineList;
+    }
+
+    @Override
+    public String toString() {
+        return description;
     }
 }

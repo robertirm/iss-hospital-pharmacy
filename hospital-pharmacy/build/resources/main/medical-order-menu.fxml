@@ -3,12 +3,13 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #65c2b2;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.HelloController">
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #65c2b2;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MedicalPersonnelOrderController">
    <children>
-      <ListView layoutX="40.0" layoutY="79.0" prefHeight="611.0" prefWidth="294.0" style="-fx-background-color: #9cd9cd;" />
+      <ListView fx:id="ordersListView" layoutX="40.0" layoutY="79.0" prefHeight="611.0" prefWidth="294.0" style="-fx-background-color: #9cd9cd;" />
       <Label alignment="CENTER" layoutX="40.0" layoutY="43.0" prefHeight="35.0" prefWidth="294.0" style="-fx-background-color: #2ebfa3;" text="Orders">
          <font>
             <Font size="27.0" />
@@ -16,28 +17,28 @@
       </Label>
       <AnchorPane layoutX="437.0" layoutY="90.0" prefHeight="562.0" prefWidth="571.0" style="-fx-background-color: #9cd9cd;">
          <children>
-            <Button layoutX="43.0" layoutY="358.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="117.0" style="-fx-background-color: #4da393;" text="CREATE">
+            <Button fx:id="createButton" layoutX="43.0" layoutY="358.0" mnemonicParsing="false" onAction="#addButtonAction" prefHeight="80.0" prefWidth="117.0" style="-fx-background-color: #4da393;" text="CREATE">
                <font>
                   <Font size="22.0" />
                </font>
             </Button>
-            <Button layoutX="226.0" layoutY="358.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="118.0" style="-fx-background-color: #4da393;" text="UPDATE">
+            <Button fx:id="updateButton" layoutX="42.0" layoutY="454.0" mnemonicParsing="false" onAction="#updateButtonAction" prefHeight="80.0" prefWidth="118.0" style="-fx-background-color: #4da393;" text="UPDATE">
                <font>
                   <Font size="21.0" />
                </font>
             </Button>
-            <Button layoutX="417.0" layoutY="358.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="118.0" style="-fx-background-color: #4da393;" text="DELETE">
+            <Button fx:id="deleteButton" layoutX="174.0" layoutY="454.0" mnemonicParsing="false" onAction="#deleteButtonAction" prefHeight="80.0" prefWidth="118.0" style="-fx-background-color: #4da393;" text="DELETE">
                <font>
                   <Font size="22.0" />
                </font>
             </Button>
-            <ListView layoutX="336.0" layoutY="50.0" prefHeight="278.0" prefWidth="200.0" style="-fx-background-color: #91c4ba;" />
-            <Button layoutX="161.0" layoutY="468.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="271.0" style="-fx-background-color: #4da393;" text="SEND">
+            <ListView fx:id="currentMedicineListView" layoutX="336.0" layoutY="50.0" prefHeight="278.0" prefWidth="200.0" style="-fx-background-color: #91c4ba;" />
+            <Button fx:id="sendButton" layoutX="425.0" layoutY="454.0" mnemonicParsing="false" onAction="#sendButtonAction" prefHeight="80.0" prefWidth="118.0" style="-fx-background-color: #4da393;" text="SEND">
                <font>
                   <Font size="22.0" />
                </font>
             </Button>
-            <ListView layoutX="43.0" layoutY="50.0" prefHeight="278.0" prefWidth="200.0" style="-fx-background-color: #91c4ba;" />
+            <ListView fx:id="allMedicineListView" layoutX="43.0" layoutY="50.0" prefHeight="278.0" prefWidth="200.0" style="-fx-background-color: #91c4ba;" />
             <Label alignment="CENTER" layoutX="43.0" layoutY="22.0" prefHeight="28.0" prefWidth="200.0" style="-fx-background-color: #2ebfa3;" text="ALL ">
                <font>
                   <Font size="18.0" />
@@ -48,6 +49,8 @@
                   <Font size="18.0" />
                </font>
             </Label>
+            <TextField fx:id="descriptionTextField" layoutX="174.0" layoutY="358.0" prefHeight="80.0" prefWidth="362.0" />
+            <Button fx:id="clearButton" layoutX="276.0" layoutY="303.0" mnemonicParsing="false" onAction="#clearButtonAction" style="-fx-background-color: #4da393;" text="CLEAR" />
          </children>
       </AnchorPane>
       <Label alignment="CENTER" layoutX="437.0" layoutY="51.0" prefHeight="39.0" prefWidth="571.0" style="-fx-background-color: #2ebfa3;" text="Manage orders">
@@ -55,5 +58,6 @@
             <Font size="27.0" />
          </font>
       </Label>
+      <Button fx:id="backButton" layoutX="994.0" layoutY="678.0" mnemonicParsing="false" onAction="#backButtonAction" style="-fx-background-color: #4da393;" text="BACK" />
    </children>
 </AnchorPane>
